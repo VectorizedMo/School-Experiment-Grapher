@@ -47,8 +47,6 @@ def ValidateInput(prompt:str, valtype:str) -> any:
         except:
             print("Your input was not valid, enter again")
 
-
-
     return val
     
 
@@ -71,8 +69,8 @@ def Parse_Input() -> list:
     while len(Points1) != len(Points2):
         if CorrectCoords:print("The number of X values should be the same as the number of Y values.")
         try:
-            Points1 = GetPoints(input("Enter points for X axis: "))
-            Points2 = GetPoints(input("Enter points for Y axis: "))
+            Points1 = GetPoints(''.join([char for char in input("Enter points for X axis: ") if char!=""]))
+            Points2 = GetPoints(''.join([char for char in input("Enter points for Y axis: ") if char!=""]))
         except:
             print("Enter numbers")
         CorrectCoords = True
@@ -113,8 +111,9 @@ def FindGradientandYintercept(formula:str) -> list:
     if "*" in NewFormula:
         MultiplicativeIndex = NewFormula.index("*")
         Multiplication = True
-    elif "/" in NewFormula:
+    if "/" in NewFormula:
         MultiplicativeIndex = NewFormula.index("/")
+        Multiplication = False
     OperandArea1 = NewFormula[:MultiplicativeIndex]
     OperandArea2 = NewFormula[MultiplicativeIndex+1:]
     #Check for Brackets
@@ -177,7 +176,7 @@ def LinearRegression(xpoints:list, ypoints:list) -> list:
     SubLambda = lambda x: x*Gradient + YIntercept
     YValues = [SubLambda(x) for x in xpoints]
     YValDist = [YVal - YMean for YVal in YValues]
-    RSquared = round(sum([yvalest**2 for yvalest in YValDist])/sum([yvalact**2 for yvalact in YDistance]),3) * 100
+    RSquared = round(1/(sum([yvalest**2 for yvalest in YDistance])/sum([yvalact**2 for yvalact in YValDist])),3) * 100
     return [Gradient, YIntercept, RSquared, SubLambda, YValues]
 
 #Returns a y = x plot with respect to our x values so that the graph is relative to y = x
