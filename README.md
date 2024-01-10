@@ -9,6 +9,6 @@ This is a program that is suitable for students who need to do analysis on their
 
 # Notes:
 
-Linear formulas are equations that can be represented in the form y = mx+c where m is the slope of the line, the rate at which y increases with respect to x and c is the y intercept which is the value of y when x = 0.
+Linear formulas are equations that can be represented in the form y = mx+c where m is the slope of the line, the rate at which y increases with respect to x and c is the y intercept which is the value of y when x = 0. Incorrectly typed formulae may give incorrect data about the variables.
 
 
